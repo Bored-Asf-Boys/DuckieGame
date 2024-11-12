@@ -24,10 +24,26 @@ public class Runner
         InputManager inputManager = new InputManager(jp);
         
         Entity entity = new Entity(frame, jp);
+        double speed = 0.000001;
+        
         while (true)
         {
-        	if (inputManager.keyHeld(65))
-        	entity.move(0.0000001, 0);	
+        	if (inputManager.keyHeld(KeyEvent.VK_RIGHT))
+        	{
+        		entity.move(0.000001, 0);	
+        	}
+        	if (inputManager.keyHeld(KeyEvent.VK_LEFT))
+        	{
+        		entity.move(-0.000001, 0);	
+        	}
+        	if (inputManager.keyHeld(KeyEvent.VK_UP))
+        	{
+        		entity.move(0, -0.000001);	
+        	}
+        	if (inputManager.keyHeld(KeyEvent.VK_DOWN))
+        	{
+        		entity.move(0, 0.000001);	
+        	}	
         }
 	}
 }
