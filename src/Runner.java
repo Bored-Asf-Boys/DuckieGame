@@ -19,5 +19,9 @@ public class Runner
         frame.add(jp);
         
         Entity entity = new Entity(frame, jp);
+        while (true)
+        {
+        	entity.move(0.0000001, 0);	
+        }
 	}
 }

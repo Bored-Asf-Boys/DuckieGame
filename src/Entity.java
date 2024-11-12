@@ -5,8 +5,8 @@ import javax.swing.JPanel;
 
 public class Entity
 {
-	private float x;
-	private float y;
+	private double x;
+	private double y;
 	private int w;
 	private int h;
 	private JPanel panel;
@@ -25,5 +25,13 @@ public class Entity
 		
 		jp.add(panel);
 		frame.setVisible(true);
+	}
+	
+	void move(double x, double y)
+	{
+		this.x += x;
+		this.y += y;
+		
+		panel.setBounds((int)this.x, (int)this.y, w, h);
 	}
 }
