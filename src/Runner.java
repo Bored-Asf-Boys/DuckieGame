@@ -23,11 +23,15 @@ public class Runner
         
         InputManager inputManager = new InputManager(jp);
         
-        Entity entity = new Entity(frame, jp);
+        Entity entity = new Entity();
+        entity.addComponent(new Sprite(entity, frame, jp));
+        
         double speed = 0.000001 * 5;
         
         while (true)
         {
+        	entity.update();
+        	
         	if (inputManager.keyHeld(KeyEvent.VK_RIGHT))
         	{
         		entity.move(speed, 0);	
