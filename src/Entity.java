@@ -12,7 +12,7 @@ public class Entity
 	public int w;
 	public int h;
 
-	private Map<Class<?>, Component> components;
+	private Map<String, Component> components;
 
 	Entity()
 	{
@@ -26,7 +26,7 @@ public class Entity
 
 	public void update()
 	{
-		for (Map.Entry<Class<?>, Component> instance : components.entrySet())
+		for (Map.Entry<String, Component> instance : components.entrySet())
 		{
 			instance.getValue().update();
 		}
@@ -34,7 +34,12 @@ public class Entity
 
 	public <C extends Component> void addComponent(C component)
 	{
-		components.put(component.getClass(), component);
+		components.put(component.getClass().getName(), component);
+	}
+	
+	public <C extends Component> C getComponent(Class<C> componentType)
+	{
+		return (C) components.get(componentType.getName());
 	}
 
 	void move(double x, double y)

@@ -4,25 +4,26 @@ import javax.swing.JPanel;
 
 public class Sprite extends Component
 {
-	JFrame frame;
-	JPanel jp;
 	private JPanel panel;
 	private Color color;
 	
-	Sprite(Entity entity, JFrame frame, JPanel jp)
+	Sprite(Entity entity)
 	{
 		super(entity);
 		
-		this.frame = frame;
-		this.jp = jp;
 		this.color = Color.white;
 		
 		this.panel = new JPanel();  
 		panel.setBackground(color);
 		panel.setBounds((int)entity.x, (int)entity.y, entity.w, entity.h);	
 		
-		jp.add(panel);
-		frame.setVisible(true);
+		Runner.jp.add(panel);
+		Runner.frame.setVisible(true);
+	}
+	
+	Color getColor() 
+	{
+		return color;
 	}
 	
 	@Override

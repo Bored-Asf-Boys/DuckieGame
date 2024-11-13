@@ -24,7 +24,10 @@ public class Runner
         InputManager inputManager = new InputManager(jp);
         
         Entity entity = new Entity();
-        entity.addComponent(new Sprite(entity, frame, jp));
+        entity.addComponent(new Sprite(entity));
+        
+        Sprite sprite = entity.getComponent(Sprite.class);
+        System.out.println(entity.getComponent(Sprite.class).getColor());
         
         double speed = 0.000001 * 5;
         
