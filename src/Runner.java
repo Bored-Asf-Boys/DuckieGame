@@ -35,7 +35,6 @@ public class Runner
         entity.rect.size.set(100, 100);
         entity.addComponent(new Sprite(entity));
         
-//        double speed = 0.000001 * 5;
         double speed = 25;
         
         while (true)
