@@ -7,20 +7,13 @@ import javax.swing.JPanel;
 
 public class Entity
 {
-	public double x;
-	public double y;
-	public int w;
-	public int h;
+	public Rect rect;
 
 	private Map<String, Component> components;
 
 	Entity()
 	{
-		this.x = 0;
-		this.y = 0;
-		this.w = 100;
-		this.h = 100;
-
+		this.rect = new Rect();
 		components = new HashMap<>();
 	}
 

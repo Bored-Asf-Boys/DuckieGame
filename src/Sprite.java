@@ -15,7 +15,7 @@ public class Sprite extends Component
 		
 		this.panel = new JPanel();  
 		panel.setBackground(color);
-		panel.setBounds((int)entity.x, (int)entity.y, entity.w, entity.h);	
+		panel.setBounds((int)entity.rect.position.x, (int)entity.rect.position.y, (int)entity.rect.size.x, (int)entity.rect.size.y);	
 		
 		Runner.jp.add(panel);
 		Runner.frame.setVisible(true);
@@ -29,6 +29,6 @@ public class Sprite extends Component
 	@Override
 	public void update()
 	{
-		panel.setBounds((int)entity.x, (int)entity.y, entity.w, entity.h);
+		panel.setBounds((int)entity.rect.position.x, (int)entity.rect.position.y, (int)entity.rect.size.x, (int)entity.rect.size.y);	
 	}
 }
