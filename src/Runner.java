@@ -24,10 +24,8 @@ public class Runner
         InputManager inputManager = new InputManager(jp);
         
         Entity entity = new Entity();
+        entity.rect.size.set(100, 100);
         entity.addComponent(new Sprite(entity));
-        
-        Sprite sprite = entity.getComponent(Sprite.class);
-        System.out.println(entity.getComponent(Sprite.class).getColor());
         
         double speed = 0.000001 * 5;
         
@@ -37,19 +35,19 @@ public class Runner
         	
         	if (inputManager.keyHeld(KeyEvent.VK_RIGHT))
         	{
-        		entity.move(speed, 0);	
+        		entity.rect.move(speed, 0);	
         	}
         	if (inputManager.keyHeld(KeyEvent.VK_LEFT))
         	{
-        		entity.move(-speed, 0);	
+        		entity.rect.move(-speed, 0);	
         	}
         	if (inputManager.keyHeld(KeyEvent.VK_UP))
         	{
-        		entity.move(0, -speed);	
+        		entity.rect.move(0, -speed);	
         	}
         	if (inputManager.keyHeld(KeyEvent.VK_DOWN))
         	{
-        		entity.move(0, speed);	
+        		entity.rect.move(0, speed);	
         	}	
         }
 	}

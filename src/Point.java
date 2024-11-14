@@ -1,8 +1,8 @@
 
 public class Point
 {
-	float x;
-	float y;
+	public double x;
+	public double y;
 	
 	Point()
 	{
@@ -10,7 +10,13 @@ public class Point
 		this.y = 0;
 	}
 	
-	Point(float x, float y)
+	Point(double x, double y)
+	{
+		this.x = x;
+		this.y = y;
+	}
+	
+	void set(double x, double y)
 	{
 		this.x = x;
 		this.y = y;
@@ -36,22 +42,22 @@ public class Point
 		return new Point(x / point.x, y / point.y);
 	}
 	
-	Point add(float number)
+	Point add(double number)
 	{
 		return new Point(x + number, y + number);
 	}
 	
-	Point sub(float number)
+	Point sub(double number)
 	{
 		return new Point(x - number, y - number);
 	}
 	
-	Point mult(float number)
+	Point mult(double number)
 	{
 		return new Point(x * number, y * number);
 	}
 	
-	Point div(float number)
+	Point div(double number)
 	{
 		return new Point(x / number, y / number);
 	}

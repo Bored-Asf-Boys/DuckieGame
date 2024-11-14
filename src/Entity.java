@@ -34,10 +34,4 @@ public class Entity
 	{
 		return (C) components.get(componentType.getName());
 	}
-
-	void move(double x, double y)
-	{
-		this.x += x;
-		this.y += y;
-	}
 }
