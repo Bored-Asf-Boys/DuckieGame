@@ -35,11 +35,17 @@ public class Runner
         entity.rect.size.set(100, 100);
         entity.addComponent(new Sprite(entity));
         
+        Entity ground = new Entity();
+        ground.rect.size.set(500, 100);
+        ground.rect.position.set(250, 800);
+        ground.addComponent(new Sprite(ground));
+        
         double speed = 25;
         
         while (true)
         {
         	entity.update();
+        	ground.update();
         	
         	if (inputManager.keyHeld(KeyEvent.VK_RIGHT))
         	{
