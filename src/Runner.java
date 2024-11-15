@@ -34,6 +34,7 @@ public class Runner
         Entity entity = new Entity();
         entity.rect.size.set(100, 100);
         entity.addComponent(new Sprite(entity));
+        entity.addComponent(new Physics(entity));
         
         Entity ground = new Entity();
         ground.rect.size.set(500, 100);
@@ -55,14 +56,6 @@ public class Runner
         	{
         		entity.rect.move(-speed * deltaTime, 0);	
         	}
-        	if (inputManager.keyHeld(KeyEvent.VK_UP))
-        	{
-        		entity.rect.move(0, -speed * deltaTime);	
-        	}
-        	if (inputManager.keyHeld(KeyEvent.VK_DOWN))
-        	{
-        		entity.rect.move(0, speed * deltaTime);	
-        	}	
         	
         	deltaTime = (double)(System.nanoTime() - beginTime) / 100000000.0;
         	beginTime = System.nanoTime();
