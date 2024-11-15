@@ -24,10 +24,9 @@ public class Runner
         InputManager inputManager = new InputManager(jp);
         
         Entity entity = new Entity();
-        entity.addComponent(new Sprite(entity));
+        entity.addComponent(new Sprite(entity, "/Users/dmcg7256/Documents/Dev/Swift/DuckieGame/Legal_pad_word_testing.png"));
         
         Sprite sprite = entity.getComponent(Sprite.class);
-        System.out.println(entity.getComponent(Sprite.class).getColor());
         
         double speed = 0.000001 * 5;
         
@@ -51,6 +50,8 @@ public class Runner
         	{
         		entity.move(0, speed);	
         	}	
+        	
+        	jp.repaint();
         }
 	}
 }

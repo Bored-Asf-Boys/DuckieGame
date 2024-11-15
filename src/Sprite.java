@@ -1,34 +1,28 @@
-import java.awt.Color;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.JLabel;
 
-public class Sprite extends Component
-{
-	private JPanel panel;
-	private Color color;
-	
-	Sprite(Entity entity)
-	{
-		super(entity);
-		
-		this.color = Color.white;
-		
-		this.panel = new JPanel();  
-		panel.setBackground(color);
-		panel.setBounds((int)entity.x, (int)entity.y, entity.w, entity.h);	
-		
-		Runner.jp.add(panel);
-		Runner.frame.setVisible(true);
-	}
-	
-	Color getColor() 
-	{
-		return color;
-	}
-	
-	@Override
-	public void update()
-	{
-		panel.setBounds((int)entity.x, (int)entity.y, entity.w, entity.h);
-	}
+public class Sprite extends Component {
+    private JPanel panel;
+    
+    Sprite(Entity entity, String imagePath) {
+        super(entity);
+        
+        ImageIcon icon = new ImageIcon(imagePath);
+        
+        Image image = icon.getImage().getScaledInstance(entity.w, entity.h, Image.SCALE_SMOOTH);
+        icon = new ImageIcon(image);
+
+        this.label = new JLabel(icon);
+        label.setBounds((int) entity.x, (int) entity.y, entity.w, entity.h);
+        
+        Runner.jp.add(label);
+        Runner.frame.setVisible(true);
+    }
+
+    @Override
+    public void update() {
+        label.setBounds((int) entity.x, (int) entity.y, entity.w, entity.h);
+    }
 }
