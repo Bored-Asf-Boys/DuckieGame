@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class Physics extends Component
 {
-	final private double GRAVITY = 15;
+	final private double GRAVITY = 30;
 	Point velocity;
 	Entity entity;
 	
@@ -30,6 +30,11 @@ public class Physics extends Component
     		move.x = -25;
     	}
     	
+    	if (Runner.inputManager.checkKeyPressed(KeyEvent.VK_SPACE))
+    	{
+    		velocity.y = -100;
+    	}
+    	
     	move = move.add(velocity).mult(Runner.deltaTime);
     	
     	entity.rect.move(move.x, 0);
@@ -42,7 +47,7 @@ public class Physics extends Component
 				continue;
 			}
 			
-			velocity.set(0, 0);
+			velocity.set(0, velocity.y);
 			
 			if (move.x > 0)
 			{
@@ -63,7 +68,7 @@ public class Physics extends Component
 				continue;
 			}
 			
-			velocity.set(0, 0);
+			velocity.set(velocity.x, 0);
 			
 			if (move.y > 0)
 			{

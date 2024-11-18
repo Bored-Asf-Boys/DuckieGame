@@ -8,17 +8,24 @@ import javax.swing.JPanel;
 
 public class InputManager extends JFrame implements KeyListener {	
 	static private Map<Integer, Boolean> keysHeld;
+	static private Map<Integer, Boolean> keysPressed;
 	
 	InputManager(JPanel jp) 
 	{
 		jp.addKeyListener(this);
 		
 		 this.keysHeld = new HashMap<>();
+		 this.keysPressed = new HashMap<>();
+	}
+	
+	public void update() {
+		keysPressed.clear();
 	}
 	
     @Override
     public void keyPressed(KeyEvent e) {
         keysHeld.put(e.getKeyCode(), true);
+        keysPressed.put(e.getKeyCode(), true);
     }
 
     @Override
@@ -41,5 +48,15 @@ public class InputManager extends JFrame implements KeyListener {
 		}
 		
 		return keysHeld.get(keyCode);
+	}
+	
+	public boolean checkKeyPressed(int keyCode)
+	{
+		if (keysPressed.get(keyCode) == null)
+		{	
+			return false;
+		}
+		
+		return keysPressed.get(keyCode);
 	}
 }

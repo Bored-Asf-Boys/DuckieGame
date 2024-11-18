@@ -67,10 +67,9 @@ public class Runner
         
         while (true)
         {
+        	inputManager.update();
         	entity.update();
         	ground.update();
-        	
-        	
         	
         	deltaTime = (double)(System.nanoTime() - beginTime) / 100000000.0;
         	beginTime = System.nanoTime();
