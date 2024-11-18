@@ -4,6 +4,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.time.Duration;
 import java.time.Instant;
+import java.util.ArrayList;
 
 import javax.swing.*;
 
@@ -15,9 +16,28 @@ public class Runner
 	static private long beginTime;
 	static public double deltaTime;
 	
+	static public InputManager inputManager;
+	
+	static public ArrayList<Entity> entities;
+	
+	public static <C extends Component> ArrayList<Entity> getEntitiesWithComponent(Class<C> componentType)
+	{
+		ArrayList<Entity> entitesWithComponent = new ArrayList<Entity>();
+		
+		for (Entity entity : entities)
+		{
+			if (entity.checkComponent(componentType))
+			{
+				entitesWithComponent.add(entity);
+			}
+		}
+		
+		return entitesWithComponent;
+	}
+	
 	public static void main(String args[])
 	{
-		frame = new JFrame("I'm a JFrame");
+		frame = new JFrame("Game");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(1000, 1000);
         jp = new JPanel();
@@ -29,7 +49,8 @@ public class Runner
     	beginTime = System.nanoTime();
     	deltaTime = 0;
         
-        InputManager inputManager = new InputManager(jp);
+    	inputManager = new InputManager(jp);
+    	entities = new ArrayList<Entity>();
         
         Entity entity = new Entity();
         entity.rect.size.set(100, 100);
@@ -40,6 +61,7 @@ public class Runner
         ground.rect.size.set(500, 100);
         ground.rect.position.set(250, 800);
         ground.addComponent(new Sprite(ground));
+        ground.addComponent(new Solid(ground));
         
         double speed = 25;
         
@@ -48,14 +70,7 @@ public class Runner
         	entity.update();
         	ground.update();
         	
-        	if (inputManager.keyHeld(KeyEvent.VK_RIGHT))
-        	{
-        		entity.rect.move(speed * deltaTime, 0);	
-        	}
-        	if (inputManager.keyHeld(KeyEvent.VK_LEFT))
-        	{
-        		entity.rect.move(-speed * deltaTime, 0);	
-        	}
+        	
         	
         	deltaTime = (double)(System.nanoTime() - beginTime) / 100000000.0;
         	beginTime = System.nanoTime();

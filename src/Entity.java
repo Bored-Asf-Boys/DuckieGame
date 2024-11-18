@@ -15,6 +15,7 @@ public class Entity
 	{
 		this.rect = new Rect();
 		components = new HashMap<>();
+		Runner.entities.add(this);
 	}
 
 	public void update()
@@ -33,5 +34,10 @@ public class Entity
 	public <C extends Component> C getComponent(Class<C> componentType)
 	{
 		return (C) components.get(componentType.getName());
+	}
+	
+	public <C extends Component> boolean checkComponent(Class <C> componentType)
+	{
+		return components.get(componentType.getName()) != null;
 	}
 }

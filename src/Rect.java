@@ -24,4 +24,10 @@ public class Rect
 	{
 		this.position = this.position.add(position);
 	}
+	
+	public boolean checkCollision(Rect other)
+	{
+		 return position.x < other.position.x + other.size.x && position.x + size.x > other.position.x &&
+		         position.y < other.position.y + other.size.y && position.y + size.y > other.position.y;
+	}
 }
